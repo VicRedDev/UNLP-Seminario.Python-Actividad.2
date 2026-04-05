@@ -19,3 +19,18 @@ def simulateCompetition(rounds: list[dict["theme":str,"score":dict[str:dict[str:
         round_scores = round['scores']
 
         sorted_round_total_scores = getSortedRoundTotalScores(round_scores)
+
+        for name, score in sorted_round_total_scores:
+            if not name in results:
+                results[name] = {
+                    "total_score": score,
+                    "rounds_winned": 0,
+                    "best_round": score,
+                }
+            else:
+                results[name]["total_score"] += score
+                if score > results[name]["best_round"]:
+                    results[name]["best_round"] = score
+
+        winner = sorted_round_total_scores[0][0]
+        results[winner]["rounds_winned"] += 1

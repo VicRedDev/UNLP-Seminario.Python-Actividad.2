@@ -9,6 +9,12 @@ def getSortedRoundTotalScores(round: dict[str: dict[str:int]]) -> list[tuple[str
         reverse = True
     )
 
+def showRoundResults(round_number, round_name, winner_name, winner_score):
+    print(f"Ronda {round_number} - {round_name}:")
+    print(f"  Ganador: {winner_name} ({winner_score} pts)")
+    print("  ... (tabla de posiciones)")
+    print()
+
 def simulateCompetition(rounds: list[dict["theme":str,"score":dict[str:dict[str:int]]]]):
     results = {}
     total_rounds = len(rounds)
@@ -32,5 +38,7 @@ def simulateCompetition(rounds: list[dict["theme":str,"score":dict[str:dict[str:
                 if score > results[name]["best_round"]:
                     results[name]["best_round"] = score
 
-        winner = sorted_round_total_scores[0][0]
-        results[winner]["rounds_winned"] += 1
+        winner_name, winner_score = sorted_round_total_scores[0]
+        results[winner_name]["rounds_winned"] += 1
+
+        showRoundResults(round_number+1, round_name, winner_name, winner_score)

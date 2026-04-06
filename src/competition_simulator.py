@@ -1,7 +1,7 @@
 def getSortedRoundTotalScores(round: dict[str: dict[str:int]]) -> list[tuple[str, int]]:
     round_total_scores = []
     for name, scores in round.items():
-        round_total_scores.append((name, sum(list(scores.values()))))
+        round_total_scores.append((name, sum(scores.values())))
 
     return sorted(
         round_total_scores,

@@ -69,7 +69,7 @@ def simulateCompetition(rounds: list[dict["theme":str,"score":dict[str:dict[str:
             if not name in results:
                 results[name] = {
                     "total_score": score,
-                    "rounds_winned": 0,
+                    "rounds_won": 0,
                     "best_round": score,
                 }
             else:
@@ -78,7 +78,7 @@ def simulateCompetition(rounds: list[dict["theme":str,"score":dict[str:dict[str:
                     results[name]["best_round"] = score
 
         winner_name = sorted_round_total_scores[0][0]
-        results[winner_name]["rounds_winned"] += 1
+        results[winner_name]["rounds_won"] += 1
 
         showRoundResults(round_number+1, round_name, sorted_round_total_scores)
 
@@ -87,7 +87,7 @@ def simulateCompetition(rounds: list[dict["theme":str,"score":dict[str:dict[str:
         [
             cook_name, 
             cook_results["total_score"],
-            cook_results["rounds_winned"],
+            cook_results["rounds_won"],
             cook_results["best_round"],
             cook_results["total_score"] / total_rounds 
         ] 

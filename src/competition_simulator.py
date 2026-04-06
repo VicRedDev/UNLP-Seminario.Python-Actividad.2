@@ -17,11 +17,13 @@ def showTable(headers: list[str], data: list[list], title: str, identation: int 
         for line in data
     ]
 
+    # Get the lengths of all data + headers
     all_string_lengths = [
         len(string)
         for string in headers + sum(stringified_data, [])
     ]
 
+    # Get the maximum used size on all columns
     column_size = max(all_string_lengths) + 1
 
     line_string = "-"*(column_size*len(headers))
@@ -59,6 +61,7 @@ def simulateCompetition(rounds: list[dict["theme":str,"score":dict[str:dict[str:
 
         sorted_round_total_scores = getSortedRoundTotalScores(round_scores)
 
+        # Save round results
         for name, score in sorted_round_total_scores:
             if not name in results:
                 results[name] = {
@@ -76,6 +79,7 @@ def simulateCompetition(rounds: list[dict["theme":str,"score":dict[str:dict[str:
 
         showRoundResults(round_number+1, round_name, sorted_round_total_scores)
 
+    # Prepare results data to be printed
     results_table_data = sorted([
         [
             cook_name, 

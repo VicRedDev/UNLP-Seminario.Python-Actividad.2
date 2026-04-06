@@ -2,20 +2,25 @@
 
 Este repositorio es la entrega del ejercicio 10 de la practica/actividad 2 del seminario de Python 2026 de la Facultad de Informatica de la UNLP
 
+## Indice
+
+- [Video explicativo](#video-explicativo)
+- [Requisitos](#requisitos)
+- [Pasos de ejecucion](#pasos-de-ejecucion)
+- [Alumno](#alumno)
+
 ## Video explicativo
 
 En el siguiente drive se encuentra el video con la explicacion del codigo:
 https://drive.google.com/drive/folders/1eQxvTnZ5ALq92Pw9a6YTbIrlKGFTuBr3?usp=sharing
 
-## Ejecucion del repositorio
-
-### Requisitos
+## Requisitos
 
 - Python 3.13.* 
 - Git
 - python3-venv(requisito en Linux).
 
-### Pasos de ejecucion:
+## Pasos de ejecucion:
 
 **Clonar repositorio**
 

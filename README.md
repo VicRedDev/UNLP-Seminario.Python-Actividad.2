@@ -47,7 +47,7 @@ python3 -m pip install -r requirements.txt
 jupyter-notebook notebooks/exercises.ipynb
 ```
 
-Al hacer esto ultimo, se abrira el notebook, y al seleccionar el boton para ejecutar todas las celdas", se podran ver los resultados del codigo en la ultima celda.
+Al hacer esto ultimo, se abrira el notebook, y al seleccionar el boton para ejecutar todas las celdas, se podran ver los resultados del codigo en la ultima celda.
 
 ## Alumno
 

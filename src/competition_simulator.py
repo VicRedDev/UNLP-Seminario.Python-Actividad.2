@@ -10,8 +10,6 @@ def getSortedRoundTotalScores(round: dict[str: dict[str:int]]) -> list[tuple[str
     )
 
 def showTable(headers: list[str], data: list[list], title: str, identation: int = 2):
-    table_strings = [title]
-
     stringified_data = [
         [str(item) for item in line]
         for line in data
@@ -27,24 +25,29 @@ def showTable(headers: list[str], data: list[list], title: str, identation: int 
     ]
 
     line_string = "-"*sum(column_sizes)
-    table_strings.append(line_string)
-
     headers_string = "".join([
         headers[col_number].ljust(column_sizes[col_number]) 
         for col_number in range(len(headers))
     ])
-    table_strings.append(headers_string)
-    table_strings.append(line_string)
 
+    table_line_strings = [
+        title,
+        line_string,
+        headers_string,
+        line_string,
+    ]
 
     for line in stringified_data:
-        table_strings.append("".join([
+        table_line_strings.append("".join([
             line[col_number].ljust(column_sizes[col_number])
             for col_number in range(len(headers))
         ]))
-    table_strings.append(line_string)
+    table_line_strings.append(line_string)
 
-    print("\n".join([" "*identation + string for string in table_strings]))
+    print("\n".join([
+        " "*identation + string 
+        for string in table_line_strings
+    ]))
     print()
 
 def showRoundResults(round_number, round_name, sorted_round_total_scores: list[tuple[str, int]]):

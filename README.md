@@ -2,6 +2,11 @@
 
 Este repositorio es la entrega del ejercicio 10 de la practica/actividad 2 del seminario de Python 2026 de la Facultad de Informatica de la UNLP
 
+## Video explicativo
+
+En el siguiente drive se encuentra el video con la explicacion del codigo:
+https://drive.google.com/drive/folders/1eQxvTnZ5ALq92Pw9a6YTbIrlKGFTuBr3?usp=sharing
+
 ## Ejecucion del repositorio
 
 ### Requisitos

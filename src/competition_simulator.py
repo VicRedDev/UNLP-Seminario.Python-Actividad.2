@@ -89,7 +89,7 @@ def simulateCompetition(rounds: list[dict["theme":str,"score":dict[str:dict[str:
             cook_results["total_score"] / total_rounds 
         ] 
         for cook_name, cook_results in results.items()
-    ], reverse=True)
+    ], reverse=True, key=lambda row: row[1])
 
     showTable(
         ["Cocinero", "Puntaje", "Rondas ganadas", "Mejor ronda", "Promedio"],

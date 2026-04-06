@@ -43,9 +43,17 @@ python3 -m venv .venv
     ```
 
 **Instalar requerimientos**
-```
-python3 -m pip install -r requirements.txt
-```
+
+- En Linux(bash):
+
+    ```
+    python3 -m pip install -r requirements.txt
+    ```
+- En Windows(CMD)
+
+    ```cmd
+    python -m pip install -r requirements.txt
+    ```
 
 **Abrir notebook**
 ```

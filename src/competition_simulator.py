@@ -9,10 +9,43 @@ def getSortedRoundTotalScores(round: dict[str: dict[str:int]]) -> list[tuple[str
         reverse = True
     )
 
-def showRoundResults(round_number, round_name, winner_name, winner_score):
+def showTable(headers: list[str], data: list[list], title: str, identation: int = 2):
+    table_strings = [title]
+
+    stringified_data = [
+        [str(item) for item in line]
+        for line in data
+    ]
+
+    all_string_lengths = [
+        len(string)
+        for string in headers + sum(stringified_data, [])
+    ]
+
+    column_size = max(all_string_lengths) + 1
+
+    line_string = "-"*(column_size*len(headers))
+    table_strings.append(line_string)
+
+    headers_string = "".join(header.ljust(column_size) for header in headers)
+    table_strings.append(headers_string)
+    table_strings.append(line_string)
+
+
+    for line in stringified_data:
+        table_strings.append("".join([
+            item.ljust(column_size)
+            for item in line
+        ]))
+    table_strings.append(line_string)
+
+    print("\n".join([" "*identation + string for string in table_strings]))
+    print()
+
+def showRoundResults(round_number, round_name, sorted_round_total_scores: list[tuple[str, int]]):
+    winner_name, winner_score = sorted_round_total_scores[0]
     print(f"Ronda {round_number} - {round_name}:")
-    print(f"  Ganador: {winner_name} ({winner_score} pts)")
-    print("  ... (tabla de posiciones)")
+    showTable(["Cocinero", "Puntuacion"], sorted_round_total_scores, f"Ganador: {winner_name} ({winner_score} pts)")
     print()
 
 def simulateCompetition(rounds: list[dict["theme":str,"score":dict[str:dict[str:int]]]]):
@@ -41,4 +74,22 @@ def simulateCompetition(rounds: list[dict["theme":str,"score":dict[str:dict[str:
         winner_name, winner_score = sorted_round_total_scores[0]
         results[winner_name]["rounds_winned"] += 1
 
-        showRoundResults(round_number+1, round_name, winner_name, winner_score)
+        showRoundResults(round_number+1, round_name, sorted_round_total_scores)
+
+    results_table_data = sorted([
+        [
+            cook_name, 
+            cook_results["total_score"],
+            cook_results["rounds_winned"],
+            cook_results["best_round"],
+            cook_results["total_score"] / total_rounds 
+        ] 
+        for cook_name, cook_results in results.items()
+    ], reverse=True)
+
+    showTable(
+        ["Cocinero", "Puntaje", "Rondas ganadas", "Mejor ronda", "Promedio"],
+        results_table_data,
+        "Tabla de posiciones final:",
+        0
+    )

@@ -17,27 +17,30 @@ def showTable(headers: list[str], data: list[list], title: str, identation: int 
         for line in data
     ]
 
-    # Get the lengths of all data + headers
-    all_string_lengths = [
-        len(string)
-        for string in headers + sum(stringified_data, [])
+    # Get the maximum size use of each column
+    column_sizes = [
+        max(
+            len(headers[col_number]),
+            max([len(row[col_number] )for row in stringified_data])
+        ) + 1
+        for col_number in range(len(headers))
     ]
 
-    # Get the maximum used size on all columns
-    column_size = max(all_string_lengths) + 1
-
-    line_string = "-"*(column_size*len(headers))
+    line_string = "-"*sum(column_sizes)
     table_strings.append(line_string)
 
-    headers_string = "".join(header.ljust(column_size) for header in headers)
+    headers_string = "".join([
+        headers[col_number].ljust(column_sizes[col_number]) 
+        for col_number in range(len(headers))
+    ])
     table_strings.append(headers_string)
     table_strings.append(line_string)
 
 
     for line in stringified_data:
         table_strings.append("".join([
-            item.ljust(column_size)
-            for item in line
+            line[col_number].ljust(column_sizes[col_number])
+            for col_number in range(len(headers))
         ]))
     table_strings.append(line_string)
 

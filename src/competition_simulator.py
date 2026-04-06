@@ -71,7 +71,7 @@ def simulateCompetition(rounds: list[dict["theme":str,"score":dict[str:dict[str:
                 if score > results[name]["best_round"]:
                     results[name]["best_round"] = score
 
-        winner_name, winner_score = sorted_round_total_scores[0]
+        winner_name = sorted_round_total_scores[0][0]
         results[winner_name]["rounds_winned"] += 1
 
         showRoundResults(round_number+1, round_name, sorted_round_total_scores)
